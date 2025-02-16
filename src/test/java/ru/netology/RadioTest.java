@@ -11,10 +11,10 @@ public class RadioTest {
     public void shouldRadioStationNumber() {
         Radio num = new Radio();
 
-        num.currentRadioStationNumber = 8;
+        num.setCurrentRadioStationNumber(8);
 
         int expected = 8;
-        int actual = num.currentRadioStationNumber;
+        int actual = num.getCurrentRadioStationNumber();
 
         assertEquals(expected, actual);
     }
@@ -23,9 +23,21 @@ public class RadioTest {
     public void shouldGetCurrentRadioStationNumber() {
         Radio num = new Radio();
 
-        num.currentRadioStationNumber = 7;
+        num.setCurrentRadioStationNumber(-1);
 
-        int expected = 7;
+        int expected = 9;
+        int actual = num.getCurrentRadioStationNumber();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test//для изменения номера р/ст
+    public void shouldSetCurrentRadioStationNumber() {
+        Radio num = new Radio();
+
+        num.setCurrentRadioStationNumber(10);
+
+        int expected = 0;
         int actual = num.getCurrentRadioStationNumber();
 
         assertEquals(expected, actual);
@@ -35,10 +47,10 @@ public class RadioTest {
     public void shouldSoundVolume() {
         Radio num = new Radio();
 
-        num.soundVolume = 50;
+        num.setSoundVolume(50);
 
         int expected = 50;
-        int actual = num.soundVolume;
+        int actual = num.getSoundVolume();
 
         assertEquals(expected, actual);
     }
@@ -47,19 +59,32 @@ public class RadioTest {
     public void shouldGetSoundVolume() {
         Radio num = new Radio();
 
-        num.soundVolume = 49;
+        num.setSoundVolume(-1);
 
-        int expected = 49;
+        int expected = 0;
+        int actual = num.getSoundVolume();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test//для изменения уровня громкости
+    public void shouldSetSoundVolume() {
+        Radio num = new Radio();
+
+        num.setSoundVolume(101);
+
+        int expected = 100;
         int actual = num.getSoundVolume();
 
         assertEquals(expected, actual);
     }
 
     @Test //следующий канал
-    public void shouldSetMaxNextCurrentRadioStationNumber() {
+    public void shouldNextMaxCurrentRadioStationNumber() {
         Radio num = new Radio();
+        num.setCurrentRadioStationNumber(9);
 
-        num.setNextCurrentRadioStationNumber(9);
+        num.next();
 
         int expected = 0;
         int actual = num.getCurrentRadioStationNumber();
@@ -68,10 +93,11 @@ public class RadioTest {
     }
 
     @Test //следующий канал
-    public void shouldSetMinNextCurrentRadioStationNumber() {
+    public void shouldNextMinxCurrentRadioStationNumber() {
         Radio num = new Radio();
+        num.setCurrentRadioStationNumber(0);
 
-        num.setNextCurrentRadioStationNumber(0);
+        num.next();
 
         int expected = 1;
         int actual = num.getCurrentRadioStationNumber();
@@ -80,10 +106,11 @@ public class RadioTest {
     }
 
     @Test //предыдущий канал
-    public void shouldSetMaxPreviousCurrentRadioStationNumber() {
+    public void shouldSetPreviousMaxCurrentRadioStationNumber() {
         Radio num = new Radio();
+        num.setCurrentRadioStationNumber(9);
 
-        num.setPreviousCurrentRadioStationNumber(9);
+        num.prev();
 
         int expected = 8;
         int actual = num.getCurrentRadioStationNumber();
@@ -92,10 +119,11 @@ public class RadioTest {
     }
 
     @Test //предыдущий канал
-    public void shouldSetMinPreviousCurrentRadioStationNumber() {
+    public void shouldSetPreviousMinCurrentRadioStationNumber() {
         Radio num = new Radio();
+        num.setCurrentRadioStationNumber(0);
 
-        num.setPreviousCurrentRadioStationNumber(0);
+        num.prev();
 
         int expected = 9;
         int actual = num.getCurrentRadioStationNumber();
@@ -104,10 +132,11 @@ public class RadioTest {
     }
 
     @Test //громкость выше
-    public void shouldMaxSetNextSoundVolume() {
+    public void shouldSetNextMaxSoundVolume() {
         Radio num = new Radio();
+        num.setSoundVolume(100);
 
-        num.setNextSoundVolume(101);
+        num.higher();
 
         int expected = 100;
         int actual = num.getSoundVolume();
@@ -116,10 +145,11 @@ public class RadioTest {
     }
 
     @Test //громкость выше
-    public void shouldMinSetNextSoundVolume() {
+    public void shouldSetNextMinSoundVolume() {
         Radio num = new Radio();
+        num.setSoundVolume(0);
 
-        num.setNextSoundVolume(0);
+        num.higher();
 
         int expected = 1;
         int actual = num.getSoundVolume();
@@ -128,10 +158,11 @@ public class RadioTest {
     }
 
     @Test //громкость ниже
-    public void shouldMaxSetPreviousSoundVolume() {
+    public void shouldSetPreviousMaxSoundVolume() {
         Radio num = new Radio();
+        num.setSoundVolume(100);
 
-        num.setPreviousSoundVolume(100);
+        num.less();
 
         int expected = 99;
         int actual = num.getSoundVolume();
@@ -140,10 +171,11 @@ public class RadioTest {
     }
 
     @Test //громкость ниже
-    public void shouldMinSetPreviousSoundVolume() {
+    public void shouldSetPreviousMinSoundVolume() {
         Radio num = new Radio();
+        num.setSoundVolume(0);
 
-        num.setPreviousSoundVolume(0);
+        num.less();
 
         int expected = 0;
         int actual = num.getSoundVolume();
