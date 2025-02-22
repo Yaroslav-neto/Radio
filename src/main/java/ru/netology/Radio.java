@@ -1,41 +1,46 @@
 package ru.netology;
 
-
 public class Radio {
 
+    private int minCurrentRadioStationNumber = 0;
+    private int maxCurrentRadioStationNumber = 9;
+    private int currentRadioStationNumber = minCurrentRadioStationNumber;
 
-    private int currentRadioStationNumber; //переменная текущей радиостанции
+    public Radio() {
+        minCurrentRadioStationNumber = getMinCurrentRadioStationNumber();
+        maxCurrentRadioStationNumber = getMaxCurrentRadioStationNumber();
+        currentRadioStationNumber = getCurrentRadioStationNumber();
+    }
 
-    public int getCurrentRadioStationNumber() { //получение текущей р/ст
+    public Radio(int numberStations) {
+        maxCurrentRadioStationNumber = minCurrentRadioStationNumber + numberStations - 1;
+    }
+
+    public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
 
-    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) { //изменение р/ст
-        if (newCurrentRadioStationNumber < 0) {
-            currentRadioStationNumber = 9;
+    public int getMinCurrentRadioStationNumber() {
+        return minCurrentRadioStationNumber;
+    }
+
+    public int getMaxCurrentRadioStationNumber() {
+        return maxCurrentRadioStationNumber;
+    }
+
+
+    //изменение р/ст
+    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
+
+        if (newCurrentRadioStationNumber < minCurrentRadioStationNumber) {
+            currentRadioStationNumber = maxCurrentRadioStationNumber;
             return;
         }
-        if (newCurrentRadioStationNumber > 9) {
-            currentRadioStationNumber = 0;
+        if (newCurrentRadioStationNumber > maxCurrentRadioStationNumber) {
+            currentRadioStationNumber = minCurrentRadioStationNumber;
         } else {
             currentRadioStationNumber = newCurrentRadioStationNumber;
         }
-    }
-
-    private int soundVolume; //переменная громкости звука
-
-    public int getSoundVolume() { //получение текущей громкости
-        return soundVolume;
-    }
-
-    public void setSoundVolume(int newSoundVolume) { //изменение громкости
-        if (newSoundVolume < 0) {
-            soundVolume = 0;
-            return;
-        }
-        if (newSoundVolume > 100) {
-            soundVolume = 100;
-        } else soundVolume = newSoundVolume;
     }
 
     public void next() { //следующая станция
@@ -46,6 +51,37 @@ public class Radio {
         setCurrentRadioStationNumber(currentRadioStationNumber - 1);
     }
 
+
+    private int minSoundVolume = 0;
+    private int maxSoundVolume = 100;
+    private int soundVolume = minSoundVolume;
+
+    public int getMinSoundVolume() {
+        return minSoundVolume;
+    }
+
+    public int getMaxSoundVolume() {
+        return maxSoundVolume;
+    }
+
+    public int getSoundVolume() {
+        return soundVolume;
+    }
+
+    //изменение громкости
+    public void setSoundVolume(int newSoundVolume) {
+
+        if (newSoundVolume < minSoundVolume) {
+            soundVolume = getMinSoundVolume();
+            return;
+        }
+
+        if (newSoundVolume > maxSoundVolume) {
+            soundVolume = getMaxSoundVolume();
+        } else soundVolume = newSoundVolume;
+    }
+
+
     public void higher() { //громкость больше
         setSoundVolume(soundVolume + 1);
     }
@@ -53,5 +89,6 @@ public class Radio {
     public void less() { //громкость меньше
         setSoundVolume(soundVolume - 1);
     }
+
 
 }
