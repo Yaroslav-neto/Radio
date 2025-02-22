@@ -6,18 +6,20 @@ public class Radio {
     private int maxCurrentRadioStationNumber = 9;
     private int currentRadioStationNumber = minCurrentRadioStationNumber;
 
+    private int minSoundVolume = 0;
+    private int maxSoundVolume = 100;
+    private int soundVolume = minSoundVolume;
+
     public Radio() {
-        minCurrentRadioStationNumber = getMinCurrentRadioStationNumber();
-        maxCurrentRadioStationNumber = getMaxCurrentRadioStationNumber();
-        currentRadioStationNumber = getCurrentRadioStationNumber();
     }
 
-    public Radio(int numberStations) {
-        maxCurrentRadioStationNumber = minCurrentRadioStationNumber + numberStations - 1;
-    }
-
-    public int getCurrentRadioStationNumber() {
-        return currentRadioStationNumber;
+    public Radio(int currentRadioStationNumber) {
+        this.minCurrentRadioStationNumber = minCurrentRadioStationNumber;
+        this.maxCurrentRadioStationNumber = currentRadioStationNumber - 1;
+        this.currentRadioStationNumber = minCurrentRadioStationNumber;
+        this.minSoundVolume = minSoundVolume;
+        this.maxSoundVolume = maxSoundVolume;
+        this.soundVolume = soundVolume;
     }
 
     public int getMinCurrentRadioStationNumber() {
@@ -28,6 +30,21 @@ public class Radio {
         return maxCurrentRadioStationNumber;
     }
 
+    public int getCurrentRadioStationNumber() {
+        return currentRadioStationNumber;
+    }
+
+    public int getMinSoundVolume() {
+        return minSoundVolume;
+    }
+
+    public int getMaxSoundVolume() {
+        return maxSoundVolume;
+    }
+
+    public int getSoundVolume() {
+        return soundVolume;
+    }
 
     //изменение р/ст
     public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
@@ -43,29 +60,14 @@ public class Radio {
         }
     }
 
-    public void next() { //следующая станция
+    //следующая станция
+    public void next() {
         setCurrentRadioStationNumber(currentRadioStationNumber + 1);
     }
 
-    public void prev() { //предыдущая станция
+    //предыдущая станция
+    public void prev() {
         setCurrentRadioStationNumber(currentRadioStationNumber - 1);
-    }
-
-
-    private int minSoundVolume = 0;
-    private int maxSoundVolume = 100;
-    private int soundVolume = minSoundVolume;
-
-    public int getMinSoundVolume() {
-        return minSoundVolume;
-    }
-
-    public int getMaxSoundVolume() {
-        return maxSoundVolume;
-    }
-
-    public int getSoundVolume() {
-        return soundVolume;
     }
 
     //изменение громкости
@@ -81,14 +83,13 @@ public class Radio {
         } else soundVolume = newSoundVolume;
     }
 
-
-    public void higher() { //громкость больше
+    //громкость больше
+    public void higher() {
         setSoundVolume(soundVolume + 1);
     }
 
-    public void less() { //громкость меньше
+    //громкость меньше
+    public void less() {
         setSoundVolume(soundVolume - 1);
     }
-
-
 }
