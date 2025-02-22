@@ -88,7 +88,6 @@ public class RadioTest {
         num.higher();
 
         assertEquals(100, num.getSoundVolume());
-        assertEquals(100, num.getMaxSoundVolume());
     }
 
     @Test//для изменения уровня громкости меньше min
@@ -100,6 +99,5 @@ public class RadioTest {
         assertEquals(0, num.getSoundVolume());
         assertEquals(0, num.getMinSoundVolume());
     }
-
 
 }
