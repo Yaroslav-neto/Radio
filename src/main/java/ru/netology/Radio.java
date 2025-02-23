@@ -1,7 +1,7 @@
 package ru.netology;
 
 public class Radio {
-// переменные
+    // переменные
     private int minCurrentRadioStationNumber = 0;
     private int maxCurrentRadioStationNumber = 9;
     private int currentRadioStationNumber = minCurrentRadioStationNumber;
@@ -9,17 +9,18 @@ public class Radio {
     private int maxSoundVolume = 100;
     private int soundVolume = minSoundVolume;
 
-//конструкторы
+    //конструкторы
     public Radio() {
         minCurrentRadioStationNumber = getMinCurrentRadioStationNumber();
         maxCurrentRadioStationNumber = getMaxCurrentRadioStationNumber();
         currentRadioStationNumber = getCurrentRadioStationNumber();
     }
+
     public Radio(int numberStations) {
         maxCurrentRadioStationNumber = minCurrentRadioStationNumber + numberStations - 1;
     }
 
-//методы
+    //методы
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
