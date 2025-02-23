@@ -10,10 +10,12 @@ public class Radio {
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
+
     //получение текущей громкости
     public int getSoundVolume() {
         return soundVolume;
     }
+
     //изменение р/ст
     public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
         if (newCurrentRadioStationNumber < 0) {
@@ -26,6 +28,7 @@ public class Radio {
             currentRadioStationNumber = newCurrentRadioStationNumber;
         }
     }
+
     //изменение громкости
     public void setSoundVolume(int newSoundVolume) {
         if (newSoundVolume < 0) {
@@ -36,18 +39,22 @@ public class Radio {
             soundVolume = 100;
         } else soundVolume = newSoundVolume;
     }
+
     //следующая станция
     public void next() {
         setCurrentRadioStationNumber(currentRadioStationNumber + 1);
     }
+
     //предыдущая станция
     public void prev() {
         setCurrentRadioStationNumber(currentRadioStationNumber - 1);
     }
+
     //громкость больше
     public void higher() {
         setSoundVolume(soundVolume + 1);
     }
+
     //громкость меньше
     public void less() {
         setSoundVolume(soundVolume - 1);
