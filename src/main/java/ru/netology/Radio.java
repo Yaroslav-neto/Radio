@@ -1,21 +1,25 @@
 package ru.netology;
 
 public class Radio {
-
+// переменные
     private int minCurrentRadioStationNumber = 0;
     private int maxCurrentRadioStationNumber = 9;
     private int currentRadioStationNumber = minCurrentRadioStationNumber;
+    private int minSoundVolume = 0;
+    private int maxSoundVolume = 100;
+    private int soundVolume = minSoundVolume;
 
+//конструкторы
     public Radio() {
         minCurrentRadioStationNumber = getMinCurrentRadioStationNumber();
         maxCurrentRadioStationNumber = getMaxCurrentRadioStationNumber();
         currentRadioStationNumber = getCurrentRadioStationNumber();
     }
-
     public Radio(int numberStations) {
         maxCurrentRadioStationNumber = minCurrentRadioStationNumber + numberStations - 1;
     }
 
+//методы
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
@@ -28,6 +32,17 @@ public class Radio {
         return maxCurrentRadioStationNumber;
     }
 
+    public int getMinSoundVolume() {
+        return minSoundVolume;
+    }
+
+    public int getMaxSoundVolume() {
+        return maxSoundVolume;
+    }
+
+    public int getSoundVolume() {
+        return soundVolume;
+    }
 
     //изменение р/ст
     public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
@@ -51,23 +66,6 @@ public class Radio {
         setCurrentRadioStationNumber(currentRadioStationNumber - 1);
     }
 
-
-    private int minSoundVolume = 0;
-    private int maxSoundVolume = 100;
-    private int soundVolume = minSoundVolume;
-
-    public int getMinSoundVolume() {
-        return minSoundVolume;
-    }
-
-    public int getMaxSoundVolume() {
-        return maxSoundVolume;
-    }
-
-    public int getSoundVolume() {
-        return soundVolume;
-    }
-
     //изменение громкости
     public void setSoundVolume(int newSoundVolume) {
 
@@ -81,7 +79,6 @@ public class Radio {
         } else soundVolume = newSoundVolume;
     }
 
-
     public void higher() { //громкость больше
         setSoundVolume(soundVolume + 1);
     }
@@ -89,6 +86,4 @@ public class Radio {
     public void less() { //громкость меньше
         setSoundVolume(soundVolume - 1);
     }
-
-
 }
