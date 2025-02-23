@@ -3,14 +3,19 @@ package ru.netology;
 
 public class Radio {
 
-
     private int currentRadioStationNumber; //переменная текущей радиостанции
+    private int soundVolume; //переменная громкости звука
 
-    public int getCurrentRadioStationNumber() { //получение текущей р/ст
+    //получение текущей р/ст
+    public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
-
-    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) { //изменение р/ст
+    //получение текущей громкости
+    public int getSoundVolume() {
+        return soundVolume;
+    }
+    //изменение р/ст
+    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
         if (newCurrentRadioStationNumber < 0) {
             currentRadioStationNumber = 9;
             return;
@@ -21,14 +26,8 @@ public class Radio {
             currentRadioStationNumber = newCurrentRadioStationNumber;
         }
     }
-
-    private int soundVolume; //переменная громкости звука
-
-    public int getSoundVolume() { //получение текущей громкости
-        return soundVolume;
-    }
-
-    public void setSoundVolume(int newSoundVolume) { //изменение громкости
+    //изменение громкости
+    public void setSoundVolume(int newSoundVolume) {
         if (newSoundVolume < 0) {
             soundVolume = 0;
             return;
@@ -37,20 +36,20 @@ public class Radio {
             soundVolume = 100;
         } else soundVolume = newSoundVolume;
     }
-
-    public void next() { //следующая станция
+    //следующая станция
+    public void next() {
         setCurrentRadioStationNumber(currentRadioStationNumber + 1);
     }
-
-    public void prev() { //предыдущая станция
+    //предыдущая станция
+    public void prev() {
         setCurrentRadioStationNumber(currentRadioStationNumber - 1);
     }
-
-    public void higher() { //громкость больше
+    //громкость больше
+    public void higher() {
         setSoundVolume(soundVolume + 1);
     }
-
-    public void less() { //громкость меньше
+    //громкость меньше
+    public void less() {
         setSoundVolume(soundVolume - 1);
     }
 
